@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Todo List</title>
+
+  <style type="text/css">
+    div
+    {
+      font-size: 4em;
+      font-weight: bold;
+      text-align: center;
+      color: #aa0000;
+      text-shadow: 0em 0.07em 0.15em #221122;
+    }
+
+    ul
+    {
+      float: left;
+      font-weight: bold;
+      font-size: 2em;
+      margin-right: 2em;
+    }
+
+    li
+    {
+      font-weight: normal;
+      font-size: 0.7em;
+    }
+    input
+    {
+      width: 30em;
+      height: 3.5em;
+      background-color: #edf4ff;
+      border: 0.2em solid #000000;
+      border-radius: 0.2em;
+      margin-top: 3em;
+    }
+    button
+    {
+      border: none;
+      color: white;
+      background-color: #347ff7;
+      padding: 0.3em 0.5em;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.5em;
+      margin: 0.1em 0em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<div>Todo List<br /></div>
+
+<ul id="result">My Lists : </ul>
+
+
+<script type="text/javascript">
+  function DisplayLists()
+  {
+    var Lists = [];
+    for (var i = 0; i < localStorage.length; i++)
+    {
+      // Retrive data
+      Lists[i] = localStorage.getItem(localStorage.key(i));
+
+      // Create a <li> node
+      var node = document.createElement("LI");
+      
+      // Create a text node
+      var textnode = document.createTextNode(localStorage.getItem(localStorage.key(i)));
+
+      // Append the text to <li>
+      node.appendChild(textnode);
+      
+      // Append <li> to <ul> with id="result"
+      document.getElementById("result").appendChild(node);
+
+
+    }
+  }
+
+  DisplayLists();
+
+</script>
+  <form>
+    <input type="text" name="NewTask" placeholder=' Enter new Task here and click "Add Task" button' value="" id="NewTask"> <br />
+
+    <button type="submit" id="addTask">Add Task</button>
+  </form>
+
+<script type="text/javascript">
+  
+  function AddNewTask()
+  {
+
+    var NewTask = document.getElementById('NewTask').value;
+
+// This section is to avoid duplicate and null inputs##################################################################################
+    var InputLength = document.getElementById('NewTask').value.length;    
+    var Lists = [], count = 0;
+    for (var i = 0; i < localStorage.length; i++)
+    {
+      Lists[i] = localStorage.getItem(localStorage.key(i));
+      
+      if (NewTask.toLowerCase() == Lists[i].toLowerCase())
+        count++;
+    }
+    if (InputLength == 0)
+    {
+      console.log('Input is empty!');
+    }
+    else if (count > 0)
+    {
+      console.log("This task already exists!<br>");
+    }
+    else
+    {
+      localStorage.setItem(localStorage.length + 1, NewTask);
+      console.log("Task Added");
+    }
+// This section is to avoid duplicate and null inputs##################################################################################
+
+  }
+  
+  var addTask = document.getElementById('addTask');
+  addTask.addEventListener('click', AddNewTask, false);
+
+</script>
+
+</body>
+
+</html>

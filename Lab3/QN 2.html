@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>Calculator</title>
+
+  <style type="text/css">
+      body
+      {
+          background-color: #212a38;
+          font-size: 1.5em;
+      }
+
+      #intro
+      {
+          color: #d0c3d4;
+          font-size: 2em;
+          font-weight: bold;
+          text-shadow: -0.1em 0.08em 0.2em #6f5675;
+      }
+
+      #screen1
+      {
+          letter-spacing: 0.2em;
+          font-size: 0.7em;
+          width: 99%;
+          height: 4em;
+          background-color: #17202e;
+          color: #ffffff;
+          border: none;
+      }
+
+      #screen2
+      {
+          letter-spacing: 0.1em;
+          font-size: 0.7em;
+          width: 100%;
+          height: 4em;
+          text-align: left;
+          background-color: #000000;
+          color: #ffffff;
+          border: none;
+          font-weight: normal;
+      }
+
+      table
+      {
+        border: 0.1em solid black;
+        border-collapse: collapse;
+        background-color: red;
+      }
+
+      td
+      {
+          width: 3em;
+          height: 2.5em;
+          text-align: center;
+          background-color: #000000;
+          color: #ffffff;
+          border: 0.08em solid black;
+          margin: 0em 0em 0em 0em;
+      }
+
+      button
+      {
+        font-weight: bold;
+        font-size: 2em;
+        width: 100%; height: 100%;
+        display: inline-block;
+      }
+  </style>
+
+</head>
+
+<body>
+
+<center>
+  
+<p id="intro">Sanjaya Acharya's Calculator</p>
+
+  <div class="numbers">
+
+    <table>
+      <tr> <td colspan="5" style="border: none;"><input onclick="clearS2();" type="text"  id="screen1"/></td> </tr>
+      <tr> <td colspan="5" style="border: none;"><button id="screen2">Ans -: </td> </tr>
+
+      <tr class="buttons">
+          <td>
+            <button onclick="POS('1')">1</button>
+          </td>
+
+          <td>
+            <button onclick="POS('2')">2</button>
+          </td>
+
+          <td>
+            <button onclick="POS('3')">3</button>
+          </td>
+
+          <td>
+            <button onclick="POS('+')">+</button>
+          </td>
+
+          <td>
+            <button onclick="clearS1(); clearS2();">AC</button>
+          </td>
+      </tr>
+        
+      <tr class="buttons">
+          <td>
+            <button onclick="POS('4')">4</button>
+          </td>
+
+          <td>
+            <button onclick="POS('5')">5</button>
+          </td>
+
+          <td>
+            <button onclick="POS('6')">6</button>
+          </td>
+
+          <td>
+            <button onclick="POS('-')">-</button>
+          </td>
+
+          <td>
+            <button onclick="POS('(')">(</button>
+          </td>
+      </tr class="numbers">
+        
+      <tr>
+          <td>
+            <button onclick="POS('7')">7</button>
+          </td>
+
+          <td>
+            <button onclick="POS('8')">8</button>
+          </td>
+
+          <td>
+            <button onclick="POS('9')">9</button>
+          </td>
+
+          <td>
+            <button onclick="POS('*')">x</button>
+          </td>
+
+          <td>
+            <button onclick="POS(')')">)</button>
+          </td>
+      </tr>
+        
+      <tr class="buttons">
+          <td colspan="2">
+            <button onclick="POS('0')">0</button>
+          </td>
+
+          <td>
+            <button onclick="POS('.')">.</button>
+          </td>
+
+          <td>
+            <button onclick="POS('/')">÷</button>
+          </td>
+
+          <td>
+            <button onclick="solve()">=</button>
+          </td>
+      </tr>
+        
+    </table>
+
+  </div>
+
+
+</center>
+
+  <script type="text/javascript">
+    function clearS1()
+    {
+      document.getElementById('screen1').value = "";
+    }
+    function clearS2()
+    {
+      document.getElementById('screen2').innerHTML="Ans -: ";
+    }
+
+    function POS(data)
+    {
+      clearS2();
+      document.getElementById('screen1').value += data;
+    }
+
+    function solve() 
+    {
+      let x = document.getElementById("screen1").value;
+      let y = eval(x);
+
+      if (!(y == undefined))
+        document.getElementById("screen2").innerHTML += y;
+      
+      clearS1();
+    } 
+
+  </script>
+</body>
+
+</html>
