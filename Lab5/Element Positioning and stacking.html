@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Element Positioning And Stacking</title>
+</head>
+
+<body>
+	<div id="red" onclick="change('red')">Red</div>
+	<div id="blue" onclick="change('blue')">Blue</div>
+	<div id="green" onclick="change('green')">Green</div>
+
+	<style type="text/css">
+		div
+		{
+			width: 300px;
+			height: 150px;
+			color: white;
+			font-weight: bold;
+			font-size: 30px;
+			position: absolute;
+		}
+		#red
+		{
+			top: 50px;
+			left: 50px;
+			background-color: red;
+			z-index: 1;
+		}
+		#blue
+		{
+			top: 70px;
+			left: 200px;
+			background-color: blue;
+			z-index: 2;
+		}
+		#green
+		{
+			top: 100px;
+			left: 70px;
+			background-color: green;
+			z-index: 3;
+		}
+	</style>
+
+
+	<script type="text/javascript">
+		function change(data)
+		{
+			var x, y;
+			if (data == 'red')
+			{
+				document.getElementById('red').style.zIndex = 3;
+				x = document.getElementById('blue').style.zIndex;
+				y = document.getElementById('green').style.zIndex;
+
+				if(x > y)
+				{
+					document.getElementById('blue').style.zIndex = 2;
+					document.getElementById('green').style.zIndex = 1;
+				}
+				else
+				{
+					document.getElementById('blue').style.zIndex = 1;
+					document.getElementById('green').style.zIndex = 2;
+				}
+			}
+			else if (data == 'blue')
+			{
+				document.getElementById('blue').style.zIndex = 3;
+				x = document.getElementById('red').style.zIndex;
+				y = document.getElementById('green').style.zIndex;
+
+				if(x > y)
+				{
+					document.getElementById('red').style.zIndex = 2;
+					document.getElementById('green').style.zIndex = 1;
+				}
+				else
+				{
+					document.getElementById('red').style.zIndex = 1;
+					document.getElementById('green').style.zIndex = 2;
+				}
+			}
+			else
+			{
+				document.getElementById('green').style.zIndex = 3;
+				x = document.getElementById('red').style.zIndex;
+				y = document.getElementById('blue').style.zIndex;
+
+				if(x > y)
+				{
+					document.getElementById('red').style.zIndex = 2;
+					document.getElementById('blue').style.zIndex = 1;
+				}
+				else
+				{
+					document.getElementById('red').style.zIndex = 1;
+					document.getElementById('blue').style.zIndex = 2;
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

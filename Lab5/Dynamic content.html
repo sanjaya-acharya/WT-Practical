@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dynamic Content</title>
+</head>
+
+<body>
+	<div id="Time">
+		Offer Ends in !!<br /><br />
+		<span id="hr"></span> : <span id="min"></span> : <span id="sec"></span>
+	</div>
+
+	<script>
+		var x = setInterval(showTime, 1000);
+		
+		function showTime()
+		{ 
+			let time = new Date(); 
+			let hour = time.getHours(); 
+			let min = time.getMinutes(); 
+			let sec = time.getSeconds();
+
+			hour = 23 - hour;
+			min = 59 - min;
+			sec = 59 - sec;
+
+			hour = hour < 10 ? "0" + hour : hour;
+			min = min < 10 ? "0" + min : min;
+			sec = sec < 10 ? "0" + sec : sec;
+
+			document.getElementById('hr'). innerHTML = hour;
+			document.getElementById('min'). innerHTML = min;
+			document.getElementById('sec'). innerHTML = sec;
+
+			if(hour == "00" && min == "00" && sec == "00")
+			 	clearInterval(x);
+			// This is to stop the setInterval() at certain time
+		}
+	</script>
+
+	<div id="IMAGES">
+		<img id="Img1" src="Image1.png" alt="Image not Found">
+		<img id="Img2" src="Image2.png" alt="Image not Found">
+		<img id="Img3" src="Image3.png" alt="Image not Found">
+		<img id="Img4" src="Image4.png" alt="Image not Found">
+	</div>
+
+	<script type="text/javascript">
+		var y = setInterval(change, 2000);
+
+		function change()
+		{
+			var I1, I2, I3, I4;
+			I1 = document.getElementById('Img1').style.zIndex;
+			I2 = document.getElementById('Img2').style.zIndex;
+			I3 = document.getElementById('Img3').style.zIndex;
+			I4 = document.getElementById('Img4').style.zIndex;
+
+			if(I1 < I2 && I1 < I3 && I1 < I4)
+			{
+				document.getElementById('Img1').style.zIndex = 2;
+				document.getElementById('Img2').style.zIndex = 0;
+				document.getElementById('Img3').style.zIndex = 1;
+				document.getElementById('Img4').style.zIndex = 1;
+			}
+			else if(I2 < I1 && I2 < I3 && I2 < I4)
+			{
+				document.getElementById('Img1').style.zIndex = 1;
+				document.getElementById('Img2').style.zIndex = 2;
+				document.getElementById('Img3').style.zIndex = 0;
+				document.getElementById('Img4').style.zIndex = 1;
+			}
+			else if(I3 < I1 && I3 < I2 && I3 < I4)
+			{
+				document.getElementById('Img1').style.zIndex = 1;
+				document.getElementById('Img2').style.zIndex = 1;
+				document.getElementById('Img3').style.zIndex = 2;
+				document.getElementById('Img4').style.zIndex = 0;
+			}
+			else
+			{
+				document.getElementById('Img1').style.zIndex = 0;
+				document.getElementById('Img2').style.zIndex = 1;
+				document.getElementById('Img3').style.zIndex = 1;
+				document.getElementById('Img4').style.zIndex = 2;
+			}
+		}
+	</script>
+
+	<style type="text/css">
+		#Time
+		{
+			background-color: grey;
+			color: white;
+			margin: auto; padding: 10px;
+			width: 450px; height: 250px;
+			font-size: 40px;
+			text-align: center;
+		}
+		span
+		{
+			padding: 10px;
+			width: 70px; height: 70px;
+			background-color: black;
+			display: inline-block;
+		}
+
+		img
+		{
+			position: absolute;
+			top:300px; left: 800px;
+			width: 350px;   height: 200px;
+		}
+
+		#IMAGES
+		{
+			z-index: 1;
+		}
+
+		#Img1
+		{
+			z-index: 0;
+		}
+	</style>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

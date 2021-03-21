@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Form Validation</title>
+
+	<style type="text/css">
+		input {
+			width: 350px;
+			height: 40px;
+			font-size: 20px;
+		}
+
+		form {
+			font-size: 40px;
+		}
+
+		input[type=radio] {
+			width: 40px;
+			height: 40px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<form name="myForm" onsubmit="return validateForm()">
+		<input type="text" name="name" placeholder="Full Name"><br />
+
+		<input type="radio" name="gender" value="male">Male<br />
+		<input type="radio" name="gender" value="female">Female<br />
+		<input type="radio" name="gender" value="others">Others<br />
+
+		<input type="email" name="email" placeholder="Example@example.com"><br />
+		<input type="password" name="password" placeholder="Enter Password"><br />
+		<input type="password" name="Cpassword" placeholder="Confirm Password"><br />
+
+		<input type="submit" value="Submit">
+	</form>
+
+
+	<script>
+
+	function validateForm() {
+		var Name = document.forms["myForm"]["name"].value;
+		var Gender = document.forms["myForm"]["gender"].value;
+		var Email = document.forms["myForm"]["email"].value;
+		var Password = document.forms["myForm"]["password"].value;
+		var Cpassword = document.forms["myForm"]["Cpassword"].value;
+
+		if (Name == "" || Gender == "" || Email == "" || Password == "") {
+			alert("Some fields are not filled");
+			return false;
+		}
+
+		if (Password.length < 8){
+			alert("Password too short");
+			return false;
+		}
+
+		var SymbolsCount = 0, NumbersCount = 0, CapitalsCount = 0 ;
+		for (var i = 0; i < Password.length; i++) {
+			if (IsSymbol(Password[i]))
+				SymbolsCount++;
+			if (IsNumber(Password[i]))
+				NumbersCount++;
+			if (IsCapital(Password[i]))
+				CapitalsCount++;
+		}
+
+		if (SymbolsCount < 3) {
+			alert("Password must contain at least 3 symbols");
+			return false;
+		}
+
+		if (NumbersCount < 2) {
+			alert("Password must contain at least 2 numbers");
+			return false;
+		}
+
+		if (CapitalsCount < 2) {
+			alert("Password must contain at least 2 capital letters");
+			return false;
+		}
+
+		if (Password != Cpassword) {
+			alert("Password and confirm password doesnot match");
+			return false;
+		}
+
+		function IsNumber(character) {
+			if (character > '0' && character < '9')
+				return 1;
+			else
+				return 0;
+		}
+
+		function IsCapital(character) {
+			if (character > 'A' && character < 'Z')
+				return 1;
+			else
+				return 0;
+		}
+
+		function IsSymbol(character) {
+			var IsAlpha = 0;
+
+			if ((character > 'A' && character < 'Z') || (character > 'a' && character < 'z'))
+				IsAlpha = 1;
+
+			if (!IsAlpha && !IsNumber(character))
+				return 1;
+			else
+				return 0;
+		}
+	}
+
+	</script>
+
+</body>
+</html>
