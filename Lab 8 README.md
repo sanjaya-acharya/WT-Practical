@@ -11,6 +11,7 @@ CREATE TABLE student (
 
 
 
+
 CREATE TABLE users (
     Id INT NOT NULL ,
     Username VARCHAR(15) NOT NULL UNIQUE,
