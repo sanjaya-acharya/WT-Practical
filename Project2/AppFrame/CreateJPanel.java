@@ -2,7 +2,7 @@ package AppFrame;
 
 import javax.swing.*;
 
-public class MyAddForm {
+public class CreateJPanel {
 	// Items of Create_New_Record Form
 	static JPanel addForm = new JPanel();
 	static JLabel addNote = new JLabel("All Fields are mandatory");

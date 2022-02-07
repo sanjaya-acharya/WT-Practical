@@ -3,7 +3,7 @@ package AppFrame;
 import javax.swing.*;
 import java.awt.*;
 
-public class MyIOScreen {
+public class IOResultsJPanel {
 	public static CardLayout card = new CardLayout();
 	static JPanel IOScreen = new JPanel(card);
 
@@ -32,10 +32,10 @@ public class MyIOScreen {
 		resultScreen.setLayout(new GridLayout(10, 1));
 
 		// Setting Forms
-		IOScreen.add(MyAddForm.create(), "addForm");
-		IOScreen.add(MyReadForm.create(), "readForm");
+		IOScreen.add(CreateJPanel.create(), "addForm");
+		IOScreen.add(ReadJPanel.create(), "readForm");
 		IOScreen.add(MyUpdateForm.create(), "updateForm");
-		IOScreen.add(MyDeleteForm.create(), "deleteForm");
+		IOScreen.add(DeleteJPanel.create(), "deleteForm");
 	}
 
 	public static void clearResultScreen() {

@@ -2,7 +2,7 @@ package AppFrame;
 
 import javax.swing.*;
 
-public class MyDeleteForm {
+public class DeleteJPanel {
 	// Items of Delete_Data Form
 	static JPanel deleteForm = new JPanel();
 	static JLabel deleteNote = new JLabel("All Fields are optional");

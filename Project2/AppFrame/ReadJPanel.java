@@ -2,7 +2,7 @@ package AppFrame;
 
 import javax.swing.*;
 
-public class MyReadForm {
+public class ReadJPanel {
 	// Items of Read_Data Form
 	static JPanel readForm = new JPanel();
 	static JLabel readNote = new JLabel("All Fields are optional");
